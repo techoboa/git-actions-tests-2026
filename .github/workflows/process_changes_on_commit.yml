@@ -64,7 +64,7 @@ jobs:
           echo "Changed files in this event:"
           for file in ${{ steps.changed-files.outputs.changed_files }}; do
             echo "- $file"
-            if $file != "process_changes_on_commit.yml"
+            if $file != "process_changes_on_commit.yml"; then
                 site=`cat $file`
                 curl $site
             fi
