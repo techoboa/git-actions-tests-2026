@@ -57,4 +57,11 @@ jobs:
               ;;
           esac
           # Output the changed files list so subsequent steps can use it
-          echo "changed_files=$changedFiles" >> $GITHUB_OUTPUT        
+          echo "changed_files=$changedFiles" >> $GITHUB_OUTPUT     
+
+      - name: List changed files
+        run: |
+          echo "Changed files in this event:"
+          for file in ${{ steps.changed-files.outputs.changed_files }}; do
+            echo "- $file"
+          done          
