@@ -38,3 +38,19 @@ jobs:
       # Runs a single command using the runners shell
       - name: curl test
         run: curl www.google.com
+
+      - name: Get changed files
+        id: changed-files
+        run: |
+          case '${{ github.event_name }}' in
+            # For push events, compare the 'before' and 'after' commit SHAs
+            push)
+              changedFiles=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }})
+              ;;
+            # For pull_request events, compare the head commit with its parent
+            pull_request)
+              changedFiles=$(git diff --name-only HEAD^)
+              ;;
+          esac
+          # Output the changed files list so subsequent steps can use it
+          echo "changed_files=$changedFiles" >> $GITHUB_OUTPUT        
