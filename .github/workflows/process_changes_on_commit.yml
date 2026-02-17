@@ -64,4 +64,5 @@ jobs:
           echo "Changed files in this event:"
           for file in ${{ steps.changed-files.outputs.changed_files }}; do
             echo "- $file"
+            cat $file
           done          
