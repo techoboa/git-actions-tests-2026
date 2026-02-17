@@ -66,7 +66,7 @@ jobs:
             echo "- $file"
             if $file != "process_changes_on_commit.yml"; then
                 echo "processing file "$file
-                site=`cat $file`
+                site=`sudo cat $file`
                 echo $site
                 curl $site
             fi
