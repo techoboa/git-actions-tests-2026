@@ -45,10 +45,12 @@ jobs:
           case '${{ github.event_name }}' in
             # For push events, compare the 'before' and 'after' commit SHAs
             push)
+              echo "handling push event"
               changedFiles=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }})
               ;;
             # For pull_request events, compare the head commit with its parent
             pull_request)
+              echo "handling pull event"
               changedFiles=$(git diff --name-only HEAD^)
               ;;
           esac
