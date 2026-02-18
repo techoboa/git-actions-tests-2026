@@ -97,7 +97,8 @@ jobs:
           NOW=$(date +"%Y-%m-%d-%H%M")
           NEW_TAG="v$NOW-$tag"
           echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV # Set as environment variable for later steps        
-          gh release create "$tag" \
+          #gh release create "$tag" \
+          gh release create "$NEW_TAG" \
               --repo="$GITHUB_REPOSITORY" \
               --title="${tag#v}" \
               --generate-notes          
