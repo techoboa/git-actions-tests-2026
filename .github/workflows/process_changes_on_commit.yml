@@ -78,6 +78,18 @@ jobs:
                 echo "processing file "$file
                 site=`sudo cat $file`
                 echo $site
+
+                
                 curl $site
             #fi
-          done          
+          done    
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${tag#v}" \
+              --generate-notes          
