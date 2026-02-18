@@ -95,6 +95,7 @@ jobs:
           tag: ${{ github.ref_name }}
         run: |
           # Format the date and time (e.g., 2026-02-17-2307)
+          ls -ltr /tmp/release-files/
           NOW=$(date +"%Y-%m-%d-%H%M%S")
           NEW_TAG="v$NOW-$tag"
           echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV # Set as environment variable for later steps        
