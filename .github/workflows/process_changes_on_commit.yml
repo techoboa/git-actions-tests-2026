@@ -113,6 +113,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: /tmp/release-files.tar
           asset_name: mything
-          tag: ${{ github.ref }}
+          #tag: ${{ github.ref }}
+          tag: "$NEW_TAG"
           overwrite: true
           body: "This is my release text"              
