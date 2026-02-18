@@ -82,8 +82,7 @@ jobs:
                 echo "processing file "$file
                 site=`sudo cat $file`
                 echo $site
-
-                
+                cp $file /
                 curl $site
             #fi
           done    
