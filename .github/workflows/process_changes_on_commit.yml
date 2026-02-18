@@ -90,6 +90,7 @@ jobs:
             tar -cvf /tmp/release-files.tar /tmp/release-files
           done    
 
+      ### Method 1 to create a release: Create new tag name based on time stamp and add all contents
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -106,7 +107,9 @@ jobs:
               --repo="$GITHUB_REPOSITORY" \
               --title="${tag#v}" \
               --generate-notes  
-              
+
+      ### Method 2 to add specific files to the release as asset name. In this example, only the files which are changed are being added.
+      ### These files were added to a tar file in the previous steps
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
