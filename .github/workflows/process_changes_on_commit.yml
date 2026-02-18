@@ -93,6 +93,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
         run: |
+          # Format the date and time (e.g., 2026-02-17-2307)
+          NOW=$(date +"%Y-%m-%d-%H%M")
+          NEW_TAG="v$NOW-$tag"
+          echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV # Set as environment variable for later steps        
           gh release create "$tag" \
               --repo="$GITHUB_REPOSITORY" \
               --title="${tag#v}" \
