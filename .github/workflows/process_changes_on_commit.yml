@@ -75,6 +75,8 @@ jobs:
 
       - name: List changed files
         run: |
+          mkdir /tmp/release-files
+          chmod -R 777 /tmp/release-files
           echo "Changed files in this event:"
           for file in ${{ steps.changed-files.outputs.changed_files }}; do
             echo "- $file"
@@ -82,7 +84,7 @@ jobs:
                 echo "processing file "$file
                 site=`sudo cat $file`
                 echo $site
-                cp $file /
+                sudo cp $file  /tmp/release-files/
                 curl $site
             #fi
           done    
