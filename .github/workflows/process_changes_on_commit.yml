@@ -87,7 +87,7 @@ jobs:
                 sudo cp $file  /tmp/release-files/
                 curl $site
             #fi
-            tar -cvf /tmp/release-files
+            tar -cvf /tmp/release-files.tar /tmp/release-files
           done    
 
       - name: Create release
