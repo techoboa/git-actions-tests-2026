@@ -122,7 +122,7 @@ jobs:
           #tag: ${{ github.ref }}
           #tag: "$NEW_TAG"
           #tag: steps.create-release.outputs.NEW_TAG
-          tag: |
+          tags: |
             ${{ steps.create-release.outputs.NEW_TAG }} 
           overwrite: true
           body: "This is my release text"      
