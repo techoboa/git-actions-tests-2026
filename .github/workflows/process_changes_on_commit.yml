@@ -119,12 +119,15 @@ jobs:
           echo $org_secret_base64
 
           # read from env files in repos
+          echo ${{ inputs.environment }}
+          env_file_name=dev.env
+          
           echo ${{ github.workspace }}
           ls -ltr /home/runner/work/git-actions-tests-2026/git-actions-tests-2026/
           ls -la /home/runner/work/git-actions-tests-2026/git-actions-tests-2026/.github/
           echo "extracting env file to envs"
-          cat ${{ github.workspace }}/.github/dev.env
-          cat ${{ github.workspace }}/.github/dev.env >> $GITHUB_ENV
+          cat ${{ github.workspace }}/.github/$env_file_name
+          cat ${{ github.workspace }}/.github/$env_file_name >> $GITHUB_ENV
           echo "printing all env"
           echo $GITHUB_ENV
           cat /home/runner/work/_temp/_runner_file_commands/set_env_*
@@ -135,8 +138,7 @@ jobs:
           echo $superhero ### DID NOT WORK
           cat /home/runner/work/_temp/_runner_file_commands/set_env_* | awk -F"=" '{print $2}' ### ONLY THIS HACK WORKED
 
-          # echo ${{ vars.CURRENT_ENV }} # DID NOT WORK
-          echo ${{ inputs.environment }}
+          # echo ${{ vars.CURRENT_ENV }} # DID NOT WORK          
 
           ### DONE Testing env variables from various locations
           
