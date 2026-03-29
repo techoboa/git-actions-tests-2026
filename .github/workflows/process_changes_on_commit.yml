@@ -115,7 +115,7 @@ jobs:
           # read from env files in repos
           echo ${{ github.workspace }}
           ls -ltr /home/runner/work/git-actions-tests-2026/git-actions-tests-2026/
-          ls -la /home/runner/work/git-actions-tests-2026/git-actions-tests-2026/
+          ls -la /home/runner/work/git-actions-tests-2026/git-actions-tests-2026/.github/
           cat ${{ github.workspace }}/.github/workflows/dev.env >> $GITHUB_ENV
           echo $superhero
           ### DONE Testing env variables from various locations
