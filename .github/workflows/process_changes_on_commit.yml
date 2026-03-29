@@ -120,7 +120,17 @@ jobs:
 
           # read from env files in repos
           echo ${{ inputs.environment }}
+          in_env=${{ inputs.environment }}
+          echo $in_env
           env_file_name=dev.env
+
+                  if [ "${{ github.ref }}" = "refs/heads/master" ]; then
+            echo "::set-output name=env_name::Production"
+          elif [ "${{ github.ref }}" = "refs/heads/develop" ]; then
+            echo "::set-output name=env_name::Test"
+          else
+             echo "::set-output name=env_name::Features"
+          fi         
           
           echo ${{ github.workspace }}
           ls -ltr /home/runner/work/git-actions-tests-2026/git-actions-tests-2026/
