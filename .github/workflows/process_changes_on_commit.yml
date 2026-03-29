@@ -127,7 +127,9 @@ jobs:
           echo "${{ github.superhero }}" ### DID NOT WORK
           echo "$superhero" ### DID NOT WORK
           echo $superhero ### DID NOT WORK
-          cat /home/runner/work/_temp/_runner_file_commands/set_env_* | awk -F"=" '{print $2}'
+          cat /home/runner/work/_temp/_runner_file_commands/set_env_* | awk -F"=" '{print $2}' ### ONLY THIS HACK WORKED
+
+          echo ${{ vars.CURRENT_ENV }}
 
           ### DONE Testing env variables from various locations
           
