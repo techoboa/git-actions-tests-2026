@@ -135,7 +135,8 @@ jobs:
           echo $superhero ### DID NOT WORK
           cat /home/runner/work/_temp/_runner_file_commands/set_env_* | awk -F"=" '{print $2}' ### ONLY THIS HACK WORKED
 
-          echo ${{ vars.CURRENT_ENV }}
+          # echo ${{ vars.CURRENT_ENV }} # DID NOT WORK
+          echo ${{ inputs.environment }}
 
           ### DONE Testing env variables from various locations
           
