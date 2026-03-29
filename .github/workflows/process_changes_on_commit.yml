@@ -97,7 +97,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
-          env_secret: ${{ secrets.SECRET_ENV }}          
+          env_secret: ${{ secrets.SECRET_ENV }}
+          org_secret: ${{ secrets.ORG_LEVEL_SECRET }}
         run: |
           # Format the date and time (e.g., 2026-02-17-2307)
           ls -ltr /tmp/release-files/
@@ -107,6 +108,8 @@ jobs:
           #org_secret = ${{ secrets.ORG_LEVEL_SECRET }}
           env_secret_base64=$(echo $env_secret | base64)
           echo $env_secret_base64
+          org_secret_base64=$(echo $org_secret | base64)
+          echo $org_secret_base64
           NOW=$(date +"%Y-%m-%d-%H%M%S")
           NEW_TAG="v$NOW-$tag"
           echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV # Set as environment variable for later steps        
