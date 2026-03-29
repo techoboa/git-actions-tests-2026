@@ -123,7 +123,7 @@ jobs:
           #tag: "$NEW_TAG"
           #tag: steps.create-release.outputs.NEW_TAG
           tags: |
-            ${{ steps.create-release.outputs.NEW_TAG }} 
+            ${{ steps.create-release.env.NEW_TAG }} 
           overwrite: true
           body: "This is my release text"      
 
