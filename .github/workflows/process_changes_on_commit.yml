@@ -92,6 +92,7 @@ jobs:
 
       ### Method 1 to create a release: Create new tag name based on time stamp and add all contents
       - name: Create release
+        id: create-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
@@ -112,11 +113,14 @@ jobs:
       ### These files were added to a tar file in the previous steps
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
+        env:
+          PR_NUMBER: ${{ needs.create-release.env.NEW_TAG }}        
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: /tmp/release-files.tar
           asset_name: mything.tar
           #tag: ${{ github.ref }}
-          tag: "$NEW_TAG"
+          #tag: "$NEW_TAG"
+          tag: $PR_NUMBER
           overwrite: true
           body: "This is my release text"              
