@@ -97,13 +97,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
+          env_secret: ${{ secrets.SECRET_ENV }}          
         run: |
           # Format the date and time (e.g., 2026-02-17-2307)
           ls -ltr /tmp/release-files/
           ls -ltr /tmp/release*
           echo ${{ vars.TARGET_HOST }}
-          env_secret = ${{ secrets.SECRET_ENV }}
-          org_secret = ${{ secrets.ORG_LEVEL_SECRET }}
+          #env_secret = ${{ secrets.SECRET_ENV }}
+          #org_secret = ${{ secrets.ORG_LEVEL_SECRET }}
           env_secret_base64=$(echo $env_secret | base64)
           echo $env_secret_base64
           NOW=$(date +"%Y-%m-%d-%H%M%S")
