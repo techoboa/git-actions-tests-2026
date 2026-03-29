@@ -121,8 +121,13 @@ jobs:
           cat ${{ github.workspace }}/.github/dev.env >> $GITHUB_ENV
           echo "printing all env"
           echo $GITHUB_ENV
+          cat /home/runner/work/_temp/_runner_file_commands/set_env_*
           echo "printing superhero"
-          echo ${{ env.superhero }}
+          echo "${{ env.superhero }}"
+          echo "${{ superhero }}"
+          echo "$superhero"
+          echo $superhero
+
           ### DONE Testing env variables from various locations
           
           # Format the date and time (e.g., 2026-02-17-2307)
