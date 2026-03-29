@@ -119,17 +119,16 @@ jobs:
           echo $org_secret_base64
 
           # read from env files in repos
-          echo ${{ inputs.environment }}
+          #echo ${{ inputs.environment }}
           in_env=${{ inputs.environment }}
           echo $in_env
-          env_file_name=dev.env
 
-                  if [ "${{ github.ref }}" = "refs/heads/master" ]; then
-            echo "::set-output name=env_name::Production"
-          elif [ "${{ github.ref }}" = "refs/heads/develop" ]; then
-            echo "::set-output name=env_name::Test"
+          if [ "$in_env" = "dev" ]; then
+            env_file_name=dev.env
+          elif [ "$in_env" = "staging" ]; then
+            env_file_name=staging.env
           else
-             echo "::set-output name=env_name::Features"
+             env_file_name=prod.env
           fi         
           
           echo ${{ github.workspace }}
