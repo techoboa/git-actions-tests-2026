@@ -112,15 +112,13 @@ jobs:
       ### Method 2 to add specific files to the release as asset name. In this example, only the files which are changed are being added.
       ### These files were added to a tar file in the previous steps
       - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
-        env:
-          PR_NUMBER: ${{ needs.create-release.env.NEW_TAG }}        
+        uses: svenstaro/upload-release-action@v2      
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: /tmp/release-files.tar
           asset_name: mything.tar
           #tag: ${{ github.ref }}
           #tag: "$NEW_TAG"
-          tag: $PR_NUMBER
+          tag: ${{ steps.create-release.outputs.NEW_TAG }}
           overwrite: true
           body: "This is my release text"              
