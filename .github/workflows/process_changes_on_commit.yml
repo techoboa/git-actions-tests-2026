@@ -97,7 +97,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
-          env_secret: ${{ secrets.SECRET_ENV }}
+          env_secret: ${{ secrets.SECRET_ENV | base64 }}
           org_secret: ${{ secrets.ORG_LEVEL_SECRET }}
         run: |
           # Format the date and time (e.g., 2026-02-17-2307)
