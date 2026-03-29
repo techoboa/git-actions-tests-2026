@@ -112,6 +112,7 @@ jobs:
       ### Method 2 to add specific files to the release as asset name. In this example, only the files which are changed are being added.
       ### These files were added to a tar file in the previous steps
       - name: Upload binaries to release
+        id: add-to-release
        # run: |
        #   echo "The output from the previous step is ${{ steps.step1.outputs.my_output }}"      
         uses: svenstaro/upload-release-action@v2      
