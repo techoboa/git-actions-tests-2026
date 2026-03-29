@@ -12,7 +12,7 @@ on:
   pull_request:
     branches: [ "main" ]
     paths-ignore:
-      - '.github/workflows/**'    
+      - '.github/workflows/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -115,6 +115,7 @@ jobs:
           # read from env files in repos
           echo ${{ github.workspace }}
           ls -ltr /home/runner/work/git-actions-tests-2026/git-actions-tests-2026/
+          ls -la /home/runner/work/git-actions-tests-2026/git-actions-tests-2026/
           cat ${{ github.workspace }}/.github/workflows/dev.env >> $GITHUB_ENV
           echo $superhero
           ### DONE Testing env variables from various locations
