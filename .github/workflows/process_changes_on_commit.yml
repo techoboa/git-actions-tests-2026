@@ -117,7 +117,7 @@ jobs:
           ls -ltr /home/runner/work/git-actions-tests-2026/git-actions-tests-2026/
           ls -la /home/runner/work/git-actions-tests-2026/git-actions-tests-2026/.github/
           cat ${{ github.workspace }}/.github/dev.env >> $GITHUB_ENV
-          echo $superhero
+          echo ${{ env.superhero }}
           ### DONE Testing env variables from various locations
           
           # Format the date and time (e.g., 2026-02-17-2307)
