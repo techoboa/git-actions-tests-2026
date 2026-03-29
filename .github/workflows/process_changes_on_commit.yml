@@ -100,9 +100,7 @@ jobs:
           env_secret: ${{ secrets.SECRET_ENV }}
           org_secret: ${{ secrets.ORG_LEVEL_SECRET }}
         run: |
-          # Format the date and time (e.g., 2026-02-17-2307)
-          ls -ltr /tmp/release-files/
-          ls -ltr /tmp/release*
+          ### Testing env variables from various locations
           echo ${{ vars.TARGET_HOST }}
           #env_secret = ${{ secrets.SECRET_ENV }}
           #org_secret = ${{ secrets.ORG_LEVEL_SECRET }}
@@ -113,6 +111,15 @@ jobs:
           echo "listing org level secret"
           org_secret_base64=$(echo $org_secret | base64)
           echo $org_secret_base64
+
+          # read from env files in repos
+          cat dev.env >> $GITHUB_ENV
+          echo $superhero
+          ### DONE Testing env variables from various locations
+          
+          # Format the date and time (e.g., 2026-02-17-2307)
+          ls -ltr /tmp/release-files/
+          ls -ltr /tmp/release*          
           NOW=$(date +"%Y-%m-%d-%H%M%S")
           NEW_TAG="v$NOW-$tag"
           echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV # Set as environment variable for later steps        
