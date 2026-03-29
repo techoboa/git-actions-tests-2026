@@ -107,7 +107,9 @@ jobs:
           #env_secret = ${{ secrets.SECRET_ENV }}
           #org_secret = ${{ secrets.ORG_LEVEL_SECRET }}
           env_secret_base64=$(echo $env_secret | base64)
+          echo "listing env level secret"
           echo $env_secret_base64
+          echo "listing org level secret"
           org_secret_base64=$(echo $org_secret | base64)
           echo $org_secret_base64
           NOW=$(date +"%Y-%m-%d-%H%M%S")
