@@ -121,10 +121,10 @@ jobs:
           file: /tmp/release-files.tar
           asset_name: mything.tar
           #tag: ${{ github.ref }}
-          #tag: "$NEW_TAG"
+          tag: $NEW_TAG
           #tag: steps.create-release.outputs.NEW_TAG
-          tags: |
-            ${{ steps.create-release.env.NEW_TAG }} 
+          #tags: |
+          #  ${{ steps.create-release.env.NEW_TAG }} 
           overwrite: true
           body: "This is my release text"      
 
