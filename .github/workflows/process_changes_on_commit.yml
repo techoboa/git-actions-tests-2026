@@ -102,8 +102,8 @@ jobs:
           ls -ltr /tmp/release-files/
           ls -ltr /tmp/release*
           echo ${{ vars.TARGET_HOST }}
-          echo ${{ env.SECRET_ENV }}
-          echo ${{ env.ORG_LEVEL_SECRET }}
+          echo ${{ secrets.SECRET_ENV }}
+          echo ${{ secrets.ORG_LEVEL_SECRET }}
           NOW=$(date +"%Y-%m-%d-%H%M%S")
           NEW_TAG="v$NOW-$tag"
           echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV # Set as environment variable for later steps        
