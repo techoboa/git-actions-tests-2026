@@ -124,6 +124,7 @@ jobs:
           cat /home/runner/work/_temp/_runner_file_commands/set_env_*
           echo "printing superhero"
           echo "${{ env.superhero }}"
+          echo "${{ github.superhero }}"
           echo "$superhero"
           echo $superhero
 
