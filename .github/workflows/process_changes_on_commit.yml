@@ -113,7 +113,8 @@ jobs:
           echo $org_secret_base64
 
           # read from env files in repos
-          cat ./.github/workflows/dev.env >> $GITHUB_ENV
+          echo ${{ github.workspace }}
+          cat ${{ github.workspace }}/.github/workflows/dev.env >> $GITHUB_ENV
           echo $superhero
           ### DONE Testing env variables from various locations
           
